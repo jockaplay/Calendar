@@ -2,26 +2,23 @@ import { StyleSheet } from "react-native";
 
 export const styles = StyleSheet.create({
     container: {
-        flex: 1,
         margin: 15,
-        justifyContent: 'center',
-        gap: 20,
         flex: 1,
     },
-    input: {
-        backgroundColor: '#fff',
-        borderRadius: 4,
-        height: 40,
-        padding: 10,
+    title: {
+        fontSize: 20,
+        textAlign: 'center',
     },
-    input_2: {
-        backgroundColor: '#fff',
-        borderRadius: 4,
-        height: 150,
-        padding: 10,
-        textAlignVertical: 'top',
+    date: {
+        textAlign: 'center',
     },
     separator: {
+        marginVertical: 15,
+        height: 0.9,
+        backgroundColor: '#aaa',
+    },
+    details: {
+        paddingHorizontal: 10,
         flex: 1,
     },
     button: {
