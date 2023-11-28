@@ -1,18 +1,33 @@
 import { View, FlatList } from 'react-native';
 import { styles } from './styles'
-import { useState } from 'react';
 import Card from '../Components/Card';
+import Schedule from '../../services/sqlite/Schedule';
+import { useEffect, useState } from 'react';
 
-export default function Home() {
+export default function Home({navigation}) {
 
-    const [DATA, setData] = useState([
-        {id: 0, data: {date: {day: 22, month: 10}, commitment: "Aniversário", details: "l"}},
-        {id: 1, data: {date: {day: 4, month: 12}, commitment: "Aracomp", details: "Hello world, Hello world, Hello world, Hello world, Hello world, Hello world, Hello world, Hello world..."}},
-    ])
+
+    const printSchedule = (Schedule) => {
+        data.push({id: Schedule.id, data: {commitment: Schedule.commitment, day: Schedule.day, month: Schedule.month, details: Schedule.details}})
+        console.log("id: " + Schedule.id)
+    }
+
+    const data = []
+
+    useEffect(() => {
+        const unsubscribe = navigation.addListener('focus', () => {
+            Schedule.all()
+            .then(
+                schedule => schedule.forEach(s => printSchedule(s))
+            )
+        });
+    
+        return unsubscribe;
+      }, [navigation]);
 
     return (
         <View style={styles.container}>
-            <FlatList data={DATA} 
+            <FlatList data={data} 
                 renderItem={({item}) => <Card data={item.data}/>}
                 keyExtractor={item => item.id}
                 ItemSeparatorComponent={<View style={styles.separator}/>}

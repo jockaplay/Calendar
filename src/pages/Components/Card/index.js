@@ -9,8 +9,8 @@ export default function Card({ data }) {
     const navigation = useNavigation();
 
     return (
-        <Pressable style={styles.container} onPress={() => navigation.navigate('Scheduling', { name: data.commitment, day: data.date.day, month: month[data.date.month - 1], details: data.details})}>
-            <Text>{month[data.date.month - 1]}'s {data.date.day}</Text>
+        <Pressable style={styles.container} onPress={() => navigation.navigate('Scheduling', { name: data.commitment, day: data.day, month: month[data.month - 1], details: data.details})}>
+            <Text>{month[data.month - 1]}'s {data.day}</Text>
             <Text>{data.commitment}</Text>
         </Pressable>
     );
