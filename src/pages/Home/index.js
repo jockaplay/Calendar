@@ -6,19 +6,23 @@ import { useEffect, useState } from 'react';
 
 export default function Home({navigation}) {
 
+    const [data, setData] = useState([])
 
-    const printSchedule = (Schedule) => {
-        data.push({id: Schedule.id, data: {commitment: Schedule.commitment, day: Schedule.day, month: Schedule.month, details: Schedule.details}})
+    const addSchedule = (Schedule) => {
+        const lista = {id: Schedule.id, data: {commitment: Schedule.commitment, day: Schedule.day, month: Schedule.month, details: Schedule.details}}
+        const novaLista = [...data, lista]
+        setData(novaLista)
         console.log("id: " + Schedule.id)
+        console.log("Lista: "+lista)
+        console.log("Nova lista: "+novaLista)
+        console.log("State: "+data)
     }
-
-    const data = []
 
     useEffect(() => {
         const unsubscribe = navigation.addListener('focus', () => {
             Schedule.all()
             .then(
-                schedule => schedule.forEach(s => printSchedule(s))
+                schedule => schedule.forEach(s => addSchedule(s))
             )
         });
     
@@ -28,7 +32,7 @@ export default function Home({navigation}) {
     return (
         <View style={styles.container}>
             <FlatList data={data} 
-                renderItem={({item}) => <Card data={item.data}/>}
+                renderItem={({item}) => <Card data={item.data} id={item.id}/>}
                 keyExtractor={item => item.id}
                 ItemSeparatorComponent={<View style={styles.separator}/>}
             />

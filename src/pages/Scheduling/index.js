@@ -1,10 +1,11 @@
 import { Text, View } from 'react-native';
 import { styles } from './styles';
 import { TouchableOpacity } from 'react-native';
+import Schedule from '../../services/sqlite/Schedule';
 
 export default function Scheduling({ route, navigation }) {
 
-    const { name, month, day, details } = route.params;
+    const { id, name, month, day, details } = route.params;
 
     return (
         <View style={styles.container}>
@@ -14,6 +15,10 @@ export default function Scheduling({ route, navigation }) {
             <Text style={styles.details}>{details}</Text>
             <View style={styles.separator}></View>
             <TouchableOpacity onPress={() => navigation.navigate('New')}><Text style={styles.button}>Edit</Text></TouchableOpacity>
+            <TouchableOpacity onPress={() => {
+                    Schedule.remove(id)
+                    navigation.navigate('Home')
+                }}><Text style={styles.button}>Delete</Text></TouchableOpacity>
         </View>
     );
 }
