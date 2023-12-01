@@ -13,6 +13,7 @@ export default function New() {
   const [name, setName] = useState('')
   const [day, setDay] = useState(0)
   const [month, setMonth] = useState(0)
+  const [year, setYear] = useState(0)
   const [details, setDetails] = useState('')
 
   return (
@@ -23,7 +24,7 @@ export default function New() {
       </View>
       <View>
         <Text>Date</Text>
-        <DateField containerStyle={styles.input} />
+        <DateField styleInput={{paddingHorizontal: 40, paddingVertical: 5}} onSubmit={(value) => {setDay(value.getDate());setMonth(value.getMonth());setYear(value.getFullYear())}} containerStyle={styles.input_3} />
       </View>
       <View>
         <Text>Details</Text>
@@ -34,8 +35,9 @@ export default function New() {
         Schedule.create(
           {
             commitment: name,
-            day: 5,
-            month: 10,
+            day: day,
+            month: month,
+            year: year,
             details: details
           }
         )

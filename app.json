@@ -1,12 +1,18 @@
 {
   "expo": {
     "name": "blank",
-    "slug": "blank",
+    "slug": "schedule",
     "version": "1.0.0",
     "platforms": [
       "ios",
       "android",
       "web"
-    ]
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "410cb554-dfb3-4d16-9baa-00d373392977"
+      }
+    },
+    "owner": "jockaplay"
   }
 }

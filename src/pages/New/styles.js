@@ -21,6 +21,13 @@ export const styles = StyleSheet.create({
         padding: 10,
         textAlignVertical: 'top',
     },
+    input_3: {
+        backgroundColor: '#fff',
+        borderRadius: 4,
+        height: 40,
+        paddingHorizontal: 10,
+        textAlignVertical: 'top',
+    },
     separator: {
         flex: 1,
     },
