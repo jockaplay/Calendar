@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "blank",
+    "name": "schedule",
     "slug": "schedule",
     "version": "1.0.0",
     "platforms": [
@@ -13,6 +13,9 @@
         "projectId": "410cb554-dfb3-4d16-9baa-00d373392977"
       }
     },
-    "owner": "jockaplay"
+    "owner": "jockaplay",
+    "android": {
+      "package": "com.jockadev.schedule"
+    }
   }
 }

@@ -14,7 +14,7 @@ export default function Scheduling({ route, navigation }) {
             <View style={styles.separator}></View>
             <Text style={styles.details}>{details}</Text>
             <View style={styles.separator}></View>
-            <TouchableOpacity onPress={() => navigation.navigate('New', {name})}><Text style={styles.button}>Edit</Text></TouchableOpacity>
+            {/* <TouchableOpacity onPress={() => navigation.navigate('New', {name})}><Text style={styles.button}>Edit</Text></TouchableOpacity> */}
             <View style={{height: 10}}></View>
             <TouchableOpacity onPress={() => {
                     Schedule.remove(id)

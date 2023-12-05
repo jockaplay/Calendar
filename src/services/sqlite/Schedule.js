@@ -1,7 +1,7 @@
 import db from './SQLiteDatabase';
 
 db.transaction((tx) => {
-  tx.executeSql("DROP TABLE schedule"); //testes
+  // tx.executeSql("DROP TABLE schedule"); //testes
   tx.executeSql(
     "CREATE TABLE IF NOT EXISTS schedule (id INTEGER PRIMARY KEY AUTOINCREMENT, commitment TEXT, day INT, month INT, year INT, details TEXT);"
   );

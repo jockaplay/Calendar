@@ -1,4 +1,4 @@
-import { View, Text, TextInput, TouchableOpacity } from 'react-native';
+import { View, Text, TextInput, TouchableOpacity, ToastAndroid } from 'react-native';
 import { styles } from './styles';
 import DateField from 'react-native-datefield';
 import { useNavigation } from '@react-navigation/native';
@@ -32,16 +32,20 @@ export default function New() {
       </View>
       <View style={styles.separator} />
       <TouchableOpacity onPress={() => {
-        Schedule.create(
-          {
-            commitment: name,
-            day: day,
-            month: month,
-            year: year,
-            details: details
-          }
-        )
-        navigation.navigate('Home')
+        if (name && day && month && year ){
+          Schedule.create(
+            {
+              commitment: name,
+              day: day,
+              month: month,
+              year: year,
+              details: details
+            }
+          )
+          navigation.navigate('Home')
+        } else {
+          ToastAndroid.show('Enter valid information.', ToastAndroid.SHORT);
+        }
         }}><Text style={styles.button}>Create</Text></TouchableOpacity>
     </View>
   );
